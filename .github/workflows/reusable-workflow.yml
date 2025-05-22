@@ -32,7 +32,7 @@ jobs:
           TITLE: ${{ vars.NEXT_PUBLIC_TITLE }}
           DESCRIPTION: ${{ vars.NEXT_PUBLIC_DESCRIPTION }}
         run: |
-          docker buildx build --platform linux/amd64 --tag ghcr.io/theethawat/tdc-gallery:${{inputs.tag_name}} \
+          docker  build  --tag ghcr.io/theethawat/tdc-gallery:${{inputs.tag_name}} \
           --build-arg APIURL=$APIURL --build-arg PLACE=$PLACE --build-arg APIKEY=$APIKEY \
-          --build-arg LOGO=$LOGO --build-arg TITLE=$TITLE --build-arg DESCRIPTION=$DESCRIPTION --no-cache .
+          --build-arg LOGO="$LOGO" --build-arg TITLE="$TITLE" --build-arg DESCRIPTION="$DESCRIPTION" --no-cache .
           docker push ghcr.io/theethawat/theethawat-gallery:${{inputs.tag_name}}
