@@ -1,0 +1,20 @@
+name: Build Gallery Image and Push to Registry
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  tdc-gallery:
+    name: Build TDC Gallery
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      environment: tdc-gallery
+      tag_name: tdc
+  theethawat-gallery:
+    name: Build Theethawat Gallery
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      environment: theethawat-gallery
+      tag_name: theethawat

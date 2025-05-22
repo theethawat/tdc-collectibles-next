@@ -1,14 +1,18 @@
-name: Build Theethawat Gallery
+name: Reusable CI Workflow for TDC Gallery
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      tag_name:
+        required: true
+        type: string
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: theethawat-gallery
+    environment: ${{ inputs.environment}}
     steps:
       - uses: actions/checkout@v3
       - name: Docker Login
@@ -28,6 +32,7 @@ jobs:
           TITLE: ${{ vars.NEXT_PUBLIC_TITLE }}
           DESCRIPTION: ${{ vars.NEXT_PUBLIC_DESCRIPTION }}
         run: |
-          docker build  --tag ghcr.io/theethawat/theethawat-gallery:latest --tag ghcr.io/theethawat/theethawat-gallery:$(date +%s) --build-arg APIURL=$APIURL --build-arg PLACE=$PLACE --build-arg APIKEY=$APIKEY --build-arg LOGO=$LOGO --build-arg TITLE=$TITLE --build-arg DESCRIPTION=$DESCRIPTION .
-          docker push ghcr.io/theethawat/theethawat-gallery:latest
-          docker push ghcr.io/theethawat/theethawat-gallery:$(date +%s)
+          docker build --tag ghcr.io/theethawat/tdc-gallery:${{inputs.tag_name}} \
+          --build-arg APIURL=$APIURL --build-arg PLACE=$PLACE --build-arg APIKEY=$APIKEY \
+          --build-arg LOGO=$LOGO --build-arg TITLE=$TITLE --build-arg DESCRIPTION=$DESCRIPTION --no-cache .
+          docker push ghcr.io/theethawat/theethawat-gallery:${{inputs.tag_name}}
