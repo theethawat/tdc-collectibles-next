@@ -1,8 +1,10 @@
 import { Error, MiniThumbnailClient, Gallery } from "@/components";
+
 import { Article, Category } from "@/model";
 import dayjs from "dayjs";
 import "dayjs/locale/th";
 import _ from "lodash";
+import type { Metadata, ResolvingMetadata } from "next";
 
 export default async function ArticlePage({
   params,
@@ -48,5 +50,37 @@ export default async function ArticlePage({
   } catch (error) {
     console.error("Error fetching articles:", error);
     return <Error message={null} />;
+  }
+}
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/article/${slug}`,
+      {
+        next: { revalidate: 60 },
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+        },
+      }
+    );
+    const article: Article = await res.json();
+
+    return {
+      title: `${article.name} - ${process.env.NEXT_PUBLIC_TITLE}`,
+      description: _.truncate(article.description, { length: 100 }),
+    };
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    return {
+      title: "Error",
+      description: "Failed to fetch article data",
+    };
   }
 }

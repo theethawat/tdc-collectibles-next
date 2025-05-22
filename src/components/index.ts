@@ -6,6 +6,7 @@ import Error from "./Error";
 import MiniThumbnail from "./MiniThumbnail";
 import MiniThumbnailClient from "./MiniThumbnailClient";
 import Gallery from "./Gallery";
+import Footer from "./Footer";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   MiniThumbnail,
   MiniThumbnailClient,
   Gallery,
+  Footer,
 };
