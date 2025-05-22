@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [new URL("https://tdckhawtang.blob.core.windows.net/**")],
   },
+  output: "standalone",
 };
 
 export default nextConfig;
