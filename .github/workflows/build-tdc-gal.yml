@@ -1,0 +1,30 @@
+name: Build TDC Gallery
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Docker Login
+        # You may pin to the exact commit or the version.
+        # uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
+        uses: docker/login-action@v3.0.0
+        with:
+          registry: ghcr.io
+          username: theethawat
+          password: ${{secrets.REGISTRY_PASSWORD}}
+      - name: Build the Docker image
+        run: |
+          docker build . --file Dockerfile --tag ghcr.io/theethawat/tdc-gallery:latest --tag ghcr.io/theethawat/tdc-gallery:$(date +%s)
+          docker push ghcr.io/theethawat/tdc-gallery:latest
+env:
+  NEXT_PUBLIC_API_URL: https://admin.gallery.theduckcreator.in.th/api/v1
+  NEXT_PUBLIC_PLACE_ID: 660ed7d7bc714c001167e3c9
+  NEXT_PUBLIC_API_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoZWV0aGF3YXQiLCJpYXQiOjE3NDc5MjM1MzJ9.l7KhC4KddVvbecCResjfo1G8265XUeMFTz9yZKW92Po
+  NEXT_PUBLIC_LOGO_NAME: tdcg-logo.png
+  NEXT_PUBLIC_TITLE: TDC Collectibles Gallery
+  NEXT_PUBLIC_DESCRIPTION: Collectibles Gallery of The Duck Creator - ของสะสมที่ The Duck Creator

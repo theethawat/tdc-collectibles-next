@@ -21,6 +21,8 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
+RUN echo NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+RUN echo NEXT_PUBLIC_TITLE=$NEXT_PUBLIC_TITLE
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 

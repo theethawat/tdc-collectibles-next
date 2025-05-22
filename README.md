@@ -1,3 +1,20 @@
+# TDC & Tin Collectibles Gallery Frontpage
+
+![TDCG Logo](/public/tdcg-logo.png)
+
+The upgrade version of [https://github.com/TheDuckCreator/tdc-collectibles](TheDuckCreator/tdc-collectibles) with changing from React and Vite to Next.js for the SEO Reason. And change the implementation language from JavaScript to TypeScript.
+
+It serve the data from the backend of [TDC Gallery Admin](https://github.com/theethawat/tdc-gallery-admin)
+
+Serve in
+
+- My Gallery [gallery.theethawat.dev](https://gallery.theethawat.dev)
+- The Duck Creator Gallery [gallery.theduckcreator.in.th](https://gallery.theduckcreator.in.th)
+
+Feel free to use this or the gallery admin to build your own photo gallery!
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
