@@ -18,6 +18,9 @@ export default async function CategoryPage({
       `${process.env.NEXT_PUBLIC_API_URL}/article?page=1&size=${size}&category=${slug}`,
       {
         next: { revalidate: 60 },
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+        },
       }
     );
     if (!res.ok) {

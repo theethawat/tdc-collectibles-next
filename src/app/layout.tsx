@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar, Menu } from "@/components";
 import { Category, CategoryResponse } from "@/model";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
