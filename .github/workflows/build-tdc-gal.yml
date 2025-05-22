@@ -28,6 +28,6 @@ jobs:
           TITLE: ${{ vars.NEXT_PUBLIC_TITLE }}
           DESCRIPTION: ${{ vars.NEXT_PUBLIC_DESCRIPTION }}
         run: |
-          docker build . --file Dockerfile --tag ghcr.io/theethawat/theethawat-gallery:latest --tag ghcr.io/theethawat/theethawat-gallery:$(date +%s) --build-arg APIURL=$APIURL --build-arg PLACE=$PLACE --build-arg APIKEY=$APIKEY --build-arg LOGO=$LOGO --build-arg TITLE=$TITLE --build-arg DESCRIPTION=$DESCRIPTION
+          docker build --tag ghcr.io/theethawat/theethawat-gallery:latest --tag ghcr.io/theethawat/theethawat-gallery:$(date +%s) --build-arg APIURL=$APIURL --build-arg PLACE=$PLACE --build-arg APIKEY=$APIKEY --build-arg LOGO=$LOGO --build-arg TITLE=$TITLE --build-arg DESCRIPTION=$DESCRIPTION .
           docker push ghcr.io/theethawat/theethawat-gallery:latest
           docker push ghcr.io/theethawat/theethawat-gallery:$(date +%s)
