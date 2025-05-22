@@ -1,6 +1,10 @@
 # TDC & Tin Collectibles Gallery Frontpage
 
-![TDCG Logo](/public/tdcg-logo.png)
+<img src="public/tdcg-logo.png" style="height:100px;" ></img>
+
+[![Build TDC Gallery](https://github.com/theethawat/tdc-collectibles-next/actions/workflows/build-tdc-gal.yml/badge.svg)](https://github.com/theethawat/tdc-collectibles-next/actions/workflows/build-tdc-gal.yml)
+[![Build Theethawat Gallery](https://github.com/theethawat/tdc-collectibles-next/actions/workflows/build-theethawat-gal.yml/badge.svg)](https://github.com/theethawat/tdc-collectibles-next/actions/workflows/build-theethawat-gal.yml)
+![Static Badge](https://img.shields.io/badge/Made_in-TDC-turquoise)
 
 The upgrade version of [https://github.com/TheDuckCreator/tdc-collectibles](TheDuckCreator/tdc-collectibles) with changing from React and Vite to Next.js for the SEO Reason. And change the implementation language from JavaScript to TypeScript.
 
