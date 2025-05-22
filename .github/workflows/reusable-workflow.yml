@@ -35,4 +35,4 @@ jobs:
           docker  build  --tag ghcr.io/theethawat/tdc-gallery:${{inputs.tag_name}} \
           --build-arg APIURL=$APIURL --build-arg PLACE=$PLACE --build-arg APIKEY=$APIKEY \
           --build-arg LOGO="$LOGO" --build-arg TITLE="$TITLE" --build-arg DESCRIPTION="$DESCRIPTION" --no-cache .
-          docker push ghcr.io/theethawat/theethawat-gallery:${{inputs.tag_name}}
+          docker push ghcr.io/theethawat/tdc-gallery:${{inputs.tag_name}}
