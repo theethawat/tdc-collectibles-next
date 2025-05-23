@@ -30,7 +30,9 @@ export default function ArticlesList({
       const res = await fetch(
         `${
           process.env.NEXT_PUBLIC_API_URL
-        }/article?page=1&size=${newSize}&category=${category || ""}`,
+        }/article?page=1&size=${newSize}&category=${category || ""}&place=${
+          process.env.NEXT_PUBLIC_PLACE_ID
+        }`,
         {
           next: { revalidate: 60 },
         }

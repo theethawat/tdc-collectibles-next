@@ -9,20 +9,20 @@ function ThumbnailList({ articles }: { articles: Article[] }) {
       {_.map(articles, (each: Article, index: number) => (
         <div key={index}>
           <Link
-            className='card bg-base-100 shadow-xl m-2 h-full'
+            className='card bg-base-100 shadow-xl m-2 h-full rounded-xl'
             href={`/article/${each?._id}`}
           >
-            <figure>
+            <figure className='h-50'>
               <Image
                 src={each?.image?.url}
                 alt={each?.name}
-                height={300}
+                height={50}
                 width={300}
               />
             </figure>
             <div className='card-body'>
               <h3 className='card-title text-base'>
-                {_.truncate(each?.name, { length: 56 })}
+                {_.truncate(each?.name, { length: 100 })}
               </h3>
               <p>
                 {_.map(

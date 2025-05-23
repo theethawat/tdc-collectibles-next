@@ -75,6 +75,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${article.name} - ${process.env.NEXT_PUBLIC_TITLE}`,
       description: _.truncate(article.description, { length: 100 }),
+      keywords: _.map(
+        article?.categories,
+        (category: Category) => category?.name
+      ),
+      authors: [
+        {
+          name: "Theethawat Savastham",
+          url: "https://www.theethawat.com",
+        },
+      ],
+      icons: {
+        icon: "/tdcgci.png",
+        shortcut: "/tdcgci.png",
+        apple: "/tdcgci.png",
+      },
+      creator: "Theethawat Savastham",
+      publisher: "Theethawat Savastham",
+      applicationName: process.env.NEXT_PUBLIC_TITLE,
+      openGraph: {
+        images: [
+          {
+            url: article?.image?.url,
+            width: 600,
+            height: 300,
+          },
+        ],
+        siteName: process.env.NEXT_PUBLIC_TITLE,
+        title: `${article.name} - ${process.env.NEXT_PUBLIC_TITLE}`,
+        description: _.truncate(article.description, { length: 100 }),
+        type: "article",
+        publishedTime: article?.date,
+        authors: "Theethawat Savastham",
+        countryName: "Thailand",
+        locale: "th-TH",
+      },
     };
   } catch (error) {
     console.error("Error fetching articles:", error);

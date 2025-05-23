@@ -9,7 +9,7 @@ export default async function Home() {
   // Do A server component for a SEO friendly page
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/article?page=1&size=${size}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/article?page=1&size=${size}&place=${process.env.NEXT_PUBLIC_PLACE_ID}`,
       {
         next: { revalidate: 60 },
       }

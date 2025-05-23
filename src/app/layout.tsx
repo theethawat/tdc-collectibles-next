@@ -12,6 +12,21 @@ export const metadata: Metadata = {
     shortcut: "/tdcgci.png",
     apple: "/tdcgci.png",
   },
+  creator: "Theethawat Savastham",
+  publisher: "Theethawat Savastham",
+  applicationName: process.env.NEXT_PUBLIC_TITLE,
+  openGraph: {
+    images: [
+      {
+        url: "/tdcgc.png",
+        width: 600,
+        height: 300,
+      },
+    ],
+    siteName: process.env.NEXT_PUBLIC_TITLE,
+    type: "website",
+    locale: "th-TH",
+  },
 };
 
 export default async function RootLayout({
