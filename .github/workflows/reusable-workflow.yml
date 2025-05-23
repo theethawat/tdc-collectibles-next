@@ -46,7 +46,7 @@ jobs:
           script: |-
             cd /home/worker/${{ inputs.environment}}
             echo "Going inside Droplet"
-            export CR_PAT=${{secrets.GITHUB_TOKEN }}
+            export CR_PAT=${{secrets.DROPLET_GH_PAT }}
             echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
             docker-compose pull
             docker-compose up -d
