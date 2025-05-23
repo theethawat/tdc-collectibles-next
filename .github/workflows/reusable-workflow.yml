@@ -36,3 +36,19 @@ jobs:
           --build-arg APIURL=$APIURL --build-arg PLACE=$PLACE --build-arg APIKEY=$APIKEY \
           --build-arg LOGO="$LOGO" --build-arg TITLE="$TITLE" --build-arg DESCRIPTION="$DESCRIPTION" --no-cache .
           docker push ghcr.io/theethawat/tdc-gallery:${{inputs.tag_name}}
+      - name: SSH Remote Production Server
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: dev.theduckcreator.in.th
+          port: 22
+          username: root
+          password: ${{ secrets.DROPLET_PASSWORD }}
+          script: |-
+            cd /home/worker/${{ inputs.environment}}
+            echo "Going inside Droplet"
+            export CR_PAT=${{secrets.GITHUB_TOKEN }}
+            echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
+            docker-compose pull
+            docker-compose up -d
+            echo "Success"
+            docker system prune -f
