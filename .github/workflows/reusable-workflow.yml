@@ -51,4 +51,4 @@ jobs:
             docker-compose pull
             docker-compose up -d
             echo "Success"
-            docker system prune -f
+            docker image prune -f
